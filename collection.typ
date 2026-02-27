@@ -4,7 +4,7 @@
 #align(center+horizon)[
 	#set page(footer:none)
 	= 题集篇
-	#text(font:"LXGW WenKai")[
+	#text(font:"Zhuque Fangsong (technical preview)")[
 		简明扼要 包罗万象
 	]
 ]

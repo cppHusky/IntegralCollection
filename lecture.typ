@@ -3,7 +3,7 @@
 #align(center+horizon)[
 	#set page(footer:none)
 	= 讲义篇
-	#text(font:"LXGW WenKai")[
+	#text(font:"Zhuque Fangsong (technical preview)")[
 		分门别类 深入浅出
 	]
 ]

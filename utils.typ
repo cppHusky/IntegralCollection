@@ -36,7 +36,7 @@
 )
 #let comment(body)={
 	set text(
-		font:"LXGW WenKai GB",
+		font:"Zhuque Fangsong (technical preview)",
 	)
 	set par(
 		first-line-indent:(
