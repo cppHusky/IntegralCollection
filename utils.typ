@@ -1,0 +1,52 @@
+#let ee=math.upright($e$)
+#let ii=math.upright($i$)
+#let question-id=counter("question")
+#show ref: it=>{
+	let target=query(it.target).first()
+	if type(target)!=content or target.func()!=metadata or target.value!="question" {
+		it
+	} else {
+		let sup=it.supplement
+		if sup==auto {
+			sup=[Q]
+		}
+		let num=numbering("1",..question-id.at(locate(it.target)))
+		link(it.target)[#sup#num]
+	}
+}
+#let question(
+	tag:"",
+	category:black,//red,blue,black
+	question:[],
+	answer:[],
+)={
+	question-id.step()
+	context text(fill:category,weight:"semibold")[
+		【Q#question-id.display()】
+		#label(tag)
+	]
+	question
+	parbreak()
+	text(fill:category,weight:"bold")[【解】]
+	answer
+}
+#let ref(id)=context link(
+	label(id),
+	text(font:"Noto Serif")[【Q#question-id.at(query(label(id)).first().location()).first()】]
+)
+#let comment(body)={
+	set text(
+		font:"LXGW WenKai GB",
+	)
+	set par(
+		first-line-indent:(
+			amount:2em,
+			all:true
+		),
+	)
+	body
+}
+#let subst(body)={
+	set text(fill:purple)
+	body
+}
