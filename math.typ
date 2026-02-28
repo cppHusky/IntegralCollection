@@ -1,7 +1,7 @@
-#let ee=math.upright($e$)
-#let ii=math.upright($i$)
-#let sgn=math.op("sgn")
-#let arccot=math.op("arccot")
-#let arsinh=math.op("arsinh")
-#let arcosh=math.op("arcosh")
-#let artanh=math.op("artanh")
+#let ee=$bb(e)$
+#let ii=$bb(i)$
+#let sgn=$op("sgn")$
+#let arccot=$op("arccot")$
+#let arsinh=$op("arsinh")$
+#let arcosh=$op("arcosh")$
+#let artanh=$op("artanh")$

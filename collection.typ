@@ -5,7 +5,7 @@
 	#set page(footer:none)
 	= 题集篇
 	#text(font:"Zhuque Fangsong (technical preview)")[
-		简明扼要 包罗万象
+		循序渐进 触类旁通
 	]
 ]
 #pagebreak(weak:true,to:"odd")
@@ -19,6 +19,7 @@
 #pagebreak(weak:true,to:"odd")
 == 难度三
 #question-id.update(3000)
+#include "collection/level-3.typ"
 #pagebreak(weak:true,to:"odd")
 == 难度四
 #question-id.update(4000)
