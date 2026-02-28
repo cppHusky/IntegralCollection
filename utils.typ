@@ -1,5 +1,3 @@
-#let ee=math.upright($e$)
-#let ii=math.upright($i$)
 #let question-id=counter("question")
 #show ref: it=>{
 	let target=query(it.target).first()

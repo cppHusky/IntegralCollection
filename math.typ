@@ -1,0 +1,7 @@
+#let ee=math.upright($e$)
+#let ii=math.upright($i$)
+#let sgn=math.op("sgn")
+#let arccot=math.op("arccot")
+#let arsinh=math.op("arsinh")
+#let arcosh=math.op("arcosh")
+#let artanh=math.op("artanh")

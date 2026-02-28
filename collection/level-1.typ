@@ -1,5 +1,5 @@
 #import "../utils.typ":question,comment,subst,ref
-#import "../utils.typ":ee
+#import "../math.typ":ee
 #question(
 	tag:"(x+1)^3",
 	category:red,

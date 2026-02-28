@@ -115,6 +115,12 @@
 }
 #let preset-appendix(body)={
 	show:preset
+	set par(
+		first-line-indent:(
+			amount:2em,
+			all:true,
+		)
+	)
 	show heading.where(level:1):it=>{
 		set text(
 			size:21pt,
