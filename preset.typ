@@ -1,4 +1,5 @@
 #let preset(body)={
+	import "@preview/itemize:0.2.0"
 	set page(
 		paper:"a4",
 		margin:(
@@ -30,6 +31,8 @@
 	)
 	set par(
 		justify:true,
+		leading:1.2em,
+		spacing:1.2em,
 	)
 	//句号应使用句点，且需维持标点挤压
 	show regex("[，。．、：；？！》）』」】〗〕〉］｝“‘《（『「【〖〔〈［｛，。．、：；]+"):it=>it.text.replace("。","．")
