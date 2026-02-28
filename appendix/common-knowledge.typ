@@ -111,7 +111,7 @@ $
 + $integral cos x^2 dif x=sqrt(pi/2)C(sqrt(2/pi)x)+C_1$#text(fill:gray)[注#footnote[这里的$C$是菲涅耳积分函数，而$C_1$是任意常数。]]
 + $integral ee^x^2 dif x=sqrt(pi)/2op("erfi")(x)+C$
 + $integral_0^phi (dif theta)/sqrt(1-k^2sin^2theta)=F(sin phi;k)$
-+ $integral_0_x (dif t)/sqrt((1-t^2)(1-k^2t^2))=F(x;k)$
++ $integral_0^x (dif t)/sqrt((1-t^2)(1-k^2t^2))=F(x;k)$
 + $integral_0^phi sqrt(1-k^2sin^2theta)dif theta=E(phi;k)$
 + $integral_0^x sqrt(1-k^2t^2)/sqrt(1-t^2)dif t=E(x;k)$
 + $integral_0^phi t^(p-1)(1-t)^(q-1)dif t=B(x;p,q)$
