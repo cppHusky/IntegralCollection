@@ -145,6 +145,9 @@
 	show heading.where(level:2):set heading(
 		numbering:"A.1",
 	)
+	set heading(
+		supplement:"附录",
+	)
 	body
 	}
 }
