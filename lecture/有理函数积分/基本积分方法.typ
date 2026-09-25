@@ -100,11 +100,9 @@
 			integral (x+1)^18dif x.
 		$#noindent 这列第二排的男生，你来回答一下。
 	]),
-	(chara.肖虑,[
-		$
+	(chara.肖虑,[$
 			(x+1)^18=1+18x+153x^2+816x^3+3060x^4+dots.c dots.c
-		$
-	]),
+	$]),
 	(chara.严佩,[
 		（打住）停，停，停。（苦笑）你算的真挺快，你叫什么名字？
 	]),
@@ -157,6 +155,132 @@
 		现在来看这个式子$integral 2/((2x+1)^2+1)dif x$，很显然只要用换元$red(u=2x+1)$就能把被积函数化成基本积分公式中的结构。而我们对这个换元式两边取微分，算出$blue(dif u=2dif x)$，然后就可以开始换元了：$
 			integral 1/(2x^2+2x+1)dif x=integral 2/(red((2x+1))^2+1)blue(dif x)=integral 1/(red(u)^2+1)blue(dif u)=&arctan red(u)+C\
 			=&arctan red((2x+1))+C.
+		$
+	]),
+)
+==== 扩展基本积分公式
+#lesson(
+	(chara.严佩,[
+		有了换元积分法之后，我们再回看这三个基本积分公式，就会觉得仅靠这三个公式，加上各种换元，就足够应对很多积分问题了。#parbreak()
+		大家上高数的时候应该或多或少都背过积分表，我来问问——有没有把积分表全背下来的人？
+	]),
+	[
+		一个男生小心翼翼地举起了手。
+	],
+	(chara.严佩,[
+		诶，还真有——你叫什么名字？
+	]),
+	(chara.赵超,[
+		（起身）我叫赵超。
+	]),
+	(chara.严佩,[
+		我带了九年学生，敢说把积分表全背下来的，我一只手都数得过来。（拿起粉笔）那我从高数书上随便挑一个，你来答一下：$
+			integral (dif x)/x(a x^2+b)space(a,b!=0).
+		$
+	]),
+	(chara.赵超,[
+		（挠头）这个这个，我想一想啊……好像是$
+			1/(2b)log x^2/abs(a x^2+b)+C.
+		$
+	]),
+	(chara.严佩,[
+		答对了，坐吧。现在我得用两只手数了。#parbreak()
+		其实，掌握了目前为止的知识，已经够我们推导出基本积分表中的一部分内容，包括这个。那么现在，我们就从三个基本积分公式开始，先推导几个简单的含参不定积分。首先是$
+			integral (dif x)/(a x+b)space(a!=0).
+		$#noindent 这列第二排的男生，你来回答一下。
+	]),
+	(chara.魏荷,[
+		（起身）可以令$red(u=a x+b)$，这样$blue(dif u=a dif x)$，把这个积分变成$
+			integral blue(dif x)/red(a x+b)=1/a integral blue(dif u)/red(u)=1/a log abs(red(u))+C=1/a log abs(red(a x+b))+C.
+		$
+	]),
+	(chara.严佩,[
+		正确，你叫什么名字？
+	]),
+	(chara.魏荷,[
+		我叫魏荷。
+	]),
+	(chara.严佩,[
+		坐吧。下一题：$
+			integral (dif x)/(x^2+a^2)space(a>0).
+		$#noindent 这第五排的女生，你来回答一下。
+	]),
+	(chara.史姝,[
+		（起身）应该可以令$red(u=x/a)$，然后$blue(dif u=(dif x)/a)$，把这个积分变成$
+			integral blue(dif x)/(red(x)^2+a^2)=a integral blue(dif u)/(red(a)^2red(u)^2+a^2)=1/a integral blue(dif u)/(red(u)^2+1)=&1/a arctan red(u)+C\
+			=&1/a arctan red(x)/a+C.
+		$
+	]),
+	(chara.严佩,[
+		正确，你叫什么名字？
+	]),
+	(chara.史姝,[
+		我叫史姝。
+	]),
+	(chara.严佩,[
+		好，刚才你用了一种换元方法，写成$red(u=x/a)$；现在我给你变变形，写成$red(x=a u)$，你觉得它们的区别是什么？
+	]),
+	(chara.史姝,[
+		这……没有区别啊。
+	]),
+	(chara.严佩,[
+		你们在高数课上的时候肯定讲过，我给你个提示吧：$red(u=x/a)$这种换元的形式是$u=f(x)$，而$red(x=a u)$这种换元的形式是$x=g(u)$……
+	]),
+	(chara.史姝,[
+		噢，我知道了。前一种叫第一类换元法，后一种叫第二类换元法。
+	]),
+	(chara.严佩,[
+		正确，坐吧。高数课对于不定积分的讲解一般都局限于把换元法分成一类和二类，要大家根据具体问题来选择。但在我们的课堂上，没有这个分别。同样的一个换元，你正着写成$u=x/a$就是第一类换元，反着写成$x=a u$就是第二类换元，本质完全一样，都叫“换元”。#parbreak()
+		言归正传，再来看下一道题：$
+			integral x/(a x+b)dif x space(a!=0).
+		$#noindent 倒数第三排的男生，你来回答一下。
+	]),
+	(chara.王霁,[
+		（起身）这个……
+	]),
+	(chara.严佩,[
+		上节课杨教授讲过了分式的分类，你回忆一下。
+	]),
+	(chara.王霁,[
+		呃……我忘了……
+	]),
+	(chara.严佩,[
+		你回去好好复习。后面那个男生你来回答一下，分式分为哪两类？
+	]),
+	(chara.杜颛,[
+		（起身）好像叫第一类分式和第二类分式……
+	]),
+	(chara.严佩,[
+		（恼火）你上节课到底来没来？还瞎编起来了。后面那个男生你来回答。
+	]),
+	(chara.牛弘,[
+		我——我吗？
+	]),
+	(chara.严佩,[
+		哦，是你啊，戴着口罩我差点没认出来。算了，不提问了，我直接讲，你们都坐吧。#parbreak()
+		这个被积函数是一个假分式，目前我们的积分公式中还没有这种形式的积分，但有一个和它形式非常接近的积分，就是$
+			integral (dif x)/(a x+b)=1/a log abs(a x+b)+C.
+		$#noindent 它们二者的关键区别就在于，一个是分子为$x$的假分式，一个是分子为$1$的真分式。#parbreak()
+		上节课杨教授给你们讲过了如何用多项式的带余除法把假分式化成真分式，现在我给大家一分钟的时间自己做一下把$x/(a x+b)$化成真分式，我在黑板上写过程。
+		#figure(
+			cetz.canvas(x:9mm,y:6mm,{
+				import cetz.draw:*
+				line((-.7,.5),(1,.5))
+				bezier-through((-.7,.5),(-.7,0),(-.9,-.5))
+				let content=content.with(anchor:"east")
+				content((0,0),$x$)
+				content((-1,0),$a x+b$)
+				content((1,1),$inline(++1/a)$)
+				content((0,-1),$x$)
+				content((1,-1),$inline(++b/a)$)
+				line((-.7,-1.5),(1,-1.5))
+				content((1,-2),$inline(--b/a)$)
+			})
+		)
+		所以就有$
+			x/(a x+b)=1/a-b/(a(a x+b)).
+		$#noindent 接下来就可以整理被积函数，再套用目前已有的积分公式，这题就能解出来了：$
+			integral x/(a x+b) dif x=1/a integral dif x-b/a integral (dif x)/(a x+b)=x/a-b/a^2log abs(a x+b)+C.
 		$
 	]),
 )
