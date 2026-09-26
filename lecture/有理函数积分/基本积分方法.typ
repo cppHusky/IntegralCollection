@@ -299,10 +299,101 @@
 				content((1,-2),$inline(--b/a)$)
 			})
 		)
-		所以就有$
+		#noindent 所以就有$
 			x/(a x+b)=1/a-b/(a(a x+b)).
 		$#noindent 接下来就可以整理被积函数，再套用目前已有的积分公式，这题就能解出来了：$
 			integral x/(a x+b) dif x=1/a integral dif x-b/a integral (dif x)/(a x+b)=x/a-b/a^2log abs(a x+b)+C.
 		$
+	]),
+)
+==== 通过部分分式分解来分项
+#lesson(
+	(chara.严佩,[
+		下面我再给大家出一道题：$
+			integral (dif x)/(x(x+a))space(a!=0).
+		$#noindent 这列第五排的同学，你来回答一下。
+	]),
+	(chara.沈嗣,[
+		（起身）我记得，这种问题好像是通过裂项来解决的。
+	]),
+	(chara.严佩,[
+		对，那么怎么裂项呢？
+	]),
+	(chara.沈嗣,[
+		我想一下……可以设待定系数$A,space B$，把$1/(x(x+a))$拆成$A/x+B/(x+a)$，再反过来解出$A,space B$就好。
+	]),
+	(chara.严佩,[
+		正确。你叫什么名字？
+	]),
+	(chara.沈嗣,[
+		我叫沈嗣。
+	]),
+	(chara.严佩,[
+		坐吧。上节课杨教授已经给大家讲过了裂项的方法，现在我们就要用这个方法来解决更复杂的积分问题。#parbreak()
+		先来观察一下被积函数：$1/(x^2+a x)$是一个分母次数为2的有理函数。但是，对于分母次数为2的有理函数的积分，我们目前还只能解决一种，就是那个（指黑板）：$
+			integral (dif x)/(x^2+a^2)=1/a arctan x/a+C.
+		$#noindent 既然现成的公式不能用，那我们就必须另辟蹊径，去想办法简化这个积分。而我们知道，裂项可以把分母次数较高的有理函数，转化成若干个分母次数较低的有理函数的和，所以解法就是：把一个分母次数高的、复杂的有理函数积分，变换成多个分母次数低的、简单的有理函数积分，用分项积分法的思路去逐个攻破。#parbreak()
+		上节课杨教授已经讲解了如何用待定系数法来裂项——其实这也是大家在高数课上已经学过的做法，所以我就不多废话了，直接写：$
+			1/(x(x+a))=&A/x+B/(x+a)\
+			1=&(A+B)x+A a.
+		$#noindent 解得$A=1/a,space B=-1/a$，代入到原积分中，就是$
+			integral (dif x)/(x(x+a))=1/a integral (dif x)/x-1/a integral (dif x)/(x+a)=1/a log abs(x)-1/a log abs(x+a)+C.
+		$#noindent 当然这个形式还可以进一步整理一下，写成$1/a log abs(x/(x+a))+C$。#parbreak()
+		然后我们再看一下这道题：$
+			integral (dif x)/(x^2-a^2)space (a!=0).
+		$#noindent 这列倒数第一排的同学，你来回答一下。
+	]),
+	(chara.万籁,[
+		（起身）应该可以用平方差公式分解一下分母$1/((x-a)(x+a))$，再裂项成$A/(x-a)+B/(x+a)$来做。
+	]),
+	(chara.严佩,[
+		正确，你叫什么名字？
+	]),
+	(chara.万籁,[
+		我叫万籁。
+	]),
+	(chara.严佩,[
+		好，坐吧。我把万籁同学的思路写一下：$
+			1/(x^2-a^2)=1/((x-a)(x+a))=&A/(x-a)+B/(x+a)\
+			1=&(A+B)x+(A-B)a.
+		$#noindent 解得$A=1/(2a),space B=-1/(2a)$，代入到原积分中，就是$
+			integral (dif x)/(x^2-a^2)=1/(2a)integral (dif x)/(x-a)-1/(2a)integral (dif x)/(x+a)=&1/(2a)log abs(x-a)-1/(2a)log abs(x+a)+C\
+			=&1/(2a)log abs((x-a)/(x+a))+C.
+		$#parbreak()
+		现在我们比较一下这两个形式十分相似的积分：$
+			&integral (dif x)/(x^2+a^2)=1/a arctan x/a+C\
+			&integral (dif x)/(x^2-a^2)=1/(2a)log abs((x-a)/(x+a))+C
+		$#noindent 我们会看到，二者只是在分母上有一个微小的差异，但我们采取的做法以及最终的结果居然大不相同。所以大家以后做题时也一定要注意这些细节，观察题目的结构，选择合理的做法，才能既正确、又快速地解决问题。#parbreak()
+		现在我们是时候回来看这个积分了：$
+			integral (dif x)/(x(a x^2+b))space(a,b!=0).
+		$#noindent 赵超同学，你能记得住这个积分的结果，但你能做出这个积分的过程吗？
+	]),
+	(chara.赵超,[
+		我不行我不行。
+	]),
+	(chara.严佩,[
+		我给大家一分钟的时间考虑一下，谁有想法的话就可以举手回答。（开始等候）
+	]),
+	[
+		有人举起了手。
+	],
+	(chara.严佩,[
+		来，朱异，你有什么想法？
+	]),
+	(chara.朱异,[
+		我有一个思路：先对分子分母同乘$x$，然后换元$red(u=x^2)$，就能把这道积分变成$
+			integral (x blue(dif x))/(red(x)^2(a red(x)^2+b))=1/2integral blue(dif u)/(red(u)(a red(u)+b)).
+		$#noindent 接下来就可以直接裂项解决（翻演草纸）：$
+			1/2integral (dif u)/(u(a u+b))=&1/(2b)integral (dif u)/u-a/(2b)integral (dif u)/(a u+b)\
+			=&1/(2b)log abs(red(u)/(a red(u)+b))+C\
+			=&1/(2b)log abs(red(x)^2/(a red(x)^2+b))+C.
+		$
+	]),
+	(chara.严佩,[
+		好，非常好，坐吧，这是本题的最佳做法。被积函数的分母是三次，如果非要裂项的话，计算起来会非常困难；但通过巧妙地换元$red(u=x^2)$就可以把被积函数变成分母是二次的类型，从而简化问题。#parbreak()
+		那么接下来我们就开始讲下一部分，这也是本堂课的重点。
+	]),
+	(chara.魏荷,[
+		等等！（举手）我有个问题。
 	]),
 )
