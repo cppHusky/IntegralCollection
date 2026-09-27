@@ -204,6 +204,14 @@
 	set page(
 		numbering:"i",
 	)
+	show link:set text(fill:navy)
+	show link:underline.with(offset:1.5pt)
+	set par(
+		first-line-indent:(
+			amount:2em,
+			all:true,
+		),
+	)
 	body
 }
 #let preset-collection(body)={
