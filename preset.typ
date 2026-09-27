@@ -299,3 +299,12 @@
 	set heading(supplement:"附录")
 	body
 }
+#let preset-epilogue(body)={
+	set par(
+		first-line-indent:(
+			amount:2em,
+			all:true,
+		),
+	)
+	body
+}

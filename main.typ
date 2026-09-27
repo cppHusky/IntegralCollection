@@ -9,4 +9,5 @@
 #include "./collection.typ"
 #include "./lecture.typ"
 #include "./appendix.typ"
+#include "./epilogue.typ"
 #include "./backcoverpage.typ"
