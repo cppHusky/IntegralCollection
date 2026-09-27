@@ -397,3 +397,175 @@
 		等等！（举手）我有个问题。
 	]),
 )
+==== 原函数的等价问题
+#lesson(
+	(chara.严佩,[
+		是魏荷啊，你有什么问题？
+	]),
+	(chara.魏荷,[
+		（起身）刚才我试着强行裂项，结果有了一个新的发现。
+	]),
+	(chara.严佩,[
+		强行裂项啊……当然可以。但是有个问题，如果你想在实数域内分解$a x^2+b$，那就必须要求$a$和$b$是异号的。
+	]),
+	(chara.魏荷,[
+		我确实想到了这个问题，不过可以通过分类讨论来约束一下。我们就先只讨论$a>0,space b<0$这一种情况吧。
+	]),
+	(chara.严佩,[
+		行，你接着说。
+	]),
+	(chara.魏荷,[
+		我裂项的结果是这样的：$
+			1/(x(a x^2+b))=1/(b x)-sqrt(a)/(2b(sqrt(a)x-sqrt(-b)))-sqrt(a)/(2b(sqrt(a)x+sqrt(-b))).
+		$#noindent 对这个式子积分，得到$
+			1/b log abs(x)-1/(2b)log abs(sqrt(a)x-sqrt(-b))-1/(2b)log abs(sqrt(a)x+sqrt(-b))+C.
+		$#noindent 为什么它和刚才的结果完全不一样呢？
+	]),
+	(chara.严佩,[
+		哦，原来是这个问题。那我就来给你解答一下——#parbreak()
+		首先，你们在中学都学过一个对数的运算法则$log x+log y=log(x y)$。所以我们可以把第二、三两项先合并一下：$
+			&-1/(2b)log abs(sqrt(a)x-sqrt(-b))-1/(2b)log abs(sqrt(a)x+sqrt(-b))\
+			=&-1/(2b)log abs((sqrt(a)x-sqrt(-b))(sqrt(a)x+sqrt(-b)))\
+			=&-1/(2b)log abs(a x^2+b).
+		$#noindent 到这一步还有问题吗？
+	]),
+	(chara.魏荷,[
+		没有。
+	]),
+	(chara.严佩,[
+		你们在中学时又学过一个对数运算法则$a log x=log x^a$，所以你算出的第一步其实也可以改写成$
+			1/b log abs(x)=2/(2b)log abs(x)=1/(2b)log abs(x^2).
+		$
+	]),
+	(chara.魏荷,[
+		噢——我好像懂了……
+	]),
+	(chara.严佩,[
+		再然后就可以进一步整理整个式子：$
+			1/(2b)log abs(x^2)-1/(2b)log abs(a x^2+b)+C=1/(2b)log abs(x^2/(a x^2+b))+C.
+		$#noindent 所以你的结果和朱异的结果其实完全是相等的，只不过长得样子有些区别而已，现在明白了吗？
+	]),
+	(chara.魏荷,[
+		懂了。那我没问题了。
+	]),
+	(chara.严佩,[
+		那坐吧。顺着魏荷的问题我再往下讲点，我们看一下这道题：$
+			integral x/(x^4+1)dif x.
+		$#noindent 有了前面题目的经验大家应该都能想到凑成$dif x^2$的做法：$
+			integral x/(x^4+1)dif x=1/2integral 1/((x^2)^2+1)dif x^2=red(1/2arctan x^2+C).
+		$#parbreak()
+		但是本题还有一个做法：先将被积函数裂项——来，肖虑，你来算一下。
+	]),
+	(chara.肖虑,[$
+		x/(x^4+1)=1/(2sqrt(2)(x^2-sqrt(2)x+1))-1/(2sqrt(2)(x^2+sqrt(2)x+1)).
+	$]),
+	(chara.严佩,[
+		非常好，坐吧。接下来分别解决这两个被积函数的积分就可以，因为它们形式高度相似，我就用$+-$号来写，把它们一次性都做了，你们应该能懂我意思：$
+			integral 1/(x^2+-sqrt(2)x+1)dif x=&integral 1/((x+-1/sqrt(2))^2+(1/sqrt(2))^2)dif(x+-1/sqrt(2))\
+			=&sqrt(2)arctan(sqrt(2)x+-1)+C.
+		$#noindent 最后回代这个积分结果，得到$
+			integral x/(x^4+1)dif =blue(1/2arctan(sqrt(2)x-1)-1/2arctan(sqrt(2)x+1)+C).
+		$#parbreak()
+		现在，问题来了：同一个积分出现了两个截然不同的结果，到底该信谁？给大家一分钟的时间思考一下，想到的同学可以举手回答。（开始等候）#parbreak()
+		看来还没有人完全想清楚，我先提问一个人吧。这列第三排的女生，你来回答一下。
+	]),
+	(chara.金缡,[
+		（起身）我试了一下代入$x=0$分别到这两个式子当中，发现$
+			&1/2arctan 0^2=0,\
+			&1/2arctan(0-1)-1/2arctan(0+1)=-pi/4.
+		$#noindent 所以它们两个确实不一样，那应该有一个错了……我能想到的就这么多。
+	]),
+	(chara.严佩,[
+		非常好，你刚才犯了一个十分典型的错误。（指着第一个结果）注意看，这个结果里的原函数，不是$1/2arctan x^2$，而是$1/2arctan x^2red(+C)$。这里的$C$是什么呢，是“任意常数”。换句话说，凡是与$1/2arctan x^2$相差任意常数的函数，都是这个被积函数的原函数。#parbreak()
+		而你的做法是取了$x=0$这一个点，算出两个原函数的值发现不一样，就断定原函数有错误，这合理吗？
+	]),
+	(chara.金缡,[
+		呃……有道理啊……
+	]),
+	(chara.严佩,[
+		你先坐。在不定积分当中，要验证两个原函数是否等价，绝对不能取单点的值来验证，这样做根本没有意义。正确的做法是，对两个原函数作差，化简之后看是不是只剩下常数，如果是常数，那这两个原函数就是等价的。#parbreak()
+		就拿这道题来说，我们算出了两个原函数，一个是$F_1(x)=1/2arctan x^2+C_1$，一个是$F_2(x)=1/2arctan(sqrt(2)x-1)-1/2arctan(sqrt(2)x+1)+C_2$。这里用$C_1,C_2$来区分一下，因为两个任意常数是相互独立的，可以取不同的值。#parbreak()
+		现在我们要做的就是，去验证$
+			F_1(x)-F_2(x)=1/2arctan x^2+1/2arctan(sqrt(2)x+1)-1/2arctan(sqrt(2)x-1)+C_1-C_2
+		$#noindent 是不是常数，就这么简单。#parbreak()
+		大家在中学或者在高数课上有学过反三角函数的和差公式吗？（众人摇头）那我教一下吧。#parbreak()
+		$tan$和$arctan$是一对反函数，前者把弧度值变成正切值，而后者把正切值变成弧度值。大家在中学时都学过了和角公式，举个例子：$
+			tan(alpha-beta)=(tan alpha-tan beta)/(1+tan alpha tan beta).
+		$#noindent 这里的$alpha,beta$都是弧度值。我们设想这两个弧度值都是由反正切函数通过两个正切值算出来的，所以我们就令$red(alpha=arctan x),space blue(beta=arctan y)$，把这个换元代入到上面的等式，得到：$
+			tan(red(arctan x)-blue(arctan y))=(tan red(arctan x)-tan blue(arctan y))/(1+tan red(arctan x)tan blue(arctan y)).
+		$#noindent 现在给大家出一个问题：$tan arctan X$能不能化简，化简出来是什么？刚才那个女生，你来回答一下。
+	]),
+	(chara.金缡,[
+		（起身）化简出来其实就是$X$吧。
+	]),
+	(chara.严佩,[
+		正确，你叫什么名字？
+	]),
+	(chara.金缡,[
+		我叫金缡。
+	]),
+	(chara.严佩,[
+		好，坐吧。所以可以把这个等式化简成$
+			tan(arctan x-arctan y)=(x-y)/(1+x y).
+		$#noindent 接下来我们再对等号两边分别取$arctan$，就是$
+			arctan tan(arctan x-arctan y)=arctan (x-y)/(1+x y).
+		$#noindent 再给大家出一个问题：$arctan tan A$化简出来是什么？
+	]),
+	(chara.吉峰,[
+		（抢答）$A$！
+	]),
+	(chara.严佩,[
+		刚才谁答的$A$？是你吧。来，你叫什么名字？
+	]),
+	(chara.吉峰,[
+		（起身）我叫吉峰。
+	]),
+	(chara.严佩,[
+		好，我问你一个问题：$arctan tan pi$等于多少？
+	]),
+	(chara.吉峰,[
+		等于……等于$0$……（拍大腿）哎呀我知道了！（揉大腿）应该是$A+k pi space(k in ZZ)$。
+	]),
+	(chara.严佩,[
+		这样才是正确的，坐吧。很多人都容易犯下一个错误，理所应当地认为$arctan tan A=A$。这个等式只在$-pi/2<A<pi/2$的时候才成立，如果换成这个范围外的值，就必须加上相应的$k pi$才能成立。而因为$arctan x-arctan y$它的取值范围可以达到$(-pi,pi)$，所以我们必须这么写：$
+			arctan (x-y)/(1+x y)=&cases(
+				arctan x-arctan y\,&-pi/2<arctan x-arctan y<pi/2\,,
+				arctan x-arctan y+pi\,&-pi<arctan x-arctan y<-pi/2\,,
+				arctan x-arctan y-pi\,&pi/2<arctan x-arctan y<pi.
+			)
+		$#noindent 看起来比较复杂，但是别忘了，我们求出这个公式的根本目的是为了解决那个（指）：$
+			F_1(x)-F_2(x)=1/2arctan x^2+red(1/2arctan(sqrt(2)x+1)-1/2arctan(sqrt(2)x-1))+C_1-C_2.
+		$#noindent 那我们就来看一下，$arctan(sqrt(2)x+1)-arctan(sqrt(2)x-1)$它的值域到底是多少。#parbreak()
+		在高数课上大家都学过通过导数来求函数的极值和最值。我们令$
+			g(x)=arctan(sqrt(2)x+1)-arctan(sqrt(2)x-1).
+		$#noindent 求出它的导数$
+			g'(x)=-(2x)/(x^4+1).
+		$#noindent 可以看出，这个函数只有一个驻点$x=0$，而在$x<0$时导数为正，函数递增；在$x>0$时导数为负，函数递减。我们又可以算出$
+			&lim_(x->+infinity)g(x)=pi/2-pi/2=0,\
+			&lim_(x->-infinity)g(x)=-pi/2-(-pi/2)=0,\
+			&g(0)=pi/4-(-pi/4)=pi/2.
+		$#noindent 所以$g(x)=arctan(sqrt(2)x+1)-arctan(sqrt(2)x-1)$的取值范围只在$(0,pi/2]$之间，那我们直接套公式第一行就行了：$
+			red(1/2arctan(sqrt(2)x+1)-1/2arctan(sqrt(2)x-1))=1/2arctan (sqrt(2)x+1-sqrt(2)x+1)/(1+2x^2-1)=1/2arctan 1/x^2.
+		$最后代回$F_1(x)-F_2(x)$的表达式，得到$
+			F_1(x)-F_2(x)=1/2arctan x^2+1/2arctan 1/x^2+C_1-C_2.
+		$#parbreak()
+		刚才的公式算的是两个反正切的差，但现在我们需要两个反正切的和。不过大家别急着推公式，现在我们还有更简单的方法。#parbreak()
+		大家看，$x^2$和$1/x^2$都是正数对吧。所以它们的反正切也都是正数，换言之，角是正数。而你们在中学都学过平面几何，应该知道，如果两个角互为余角，那么它们的正切值满足什么关系。吉峰？
+	]),
+	(chara.吉峰,[
+		（起身）互为倒数。
+	]),
+	(chara.严佩,[
+		对。这两者之间其实是充分必要条件，不信你们自己证。所以你来告诉我，现在我有$x^2$和$1/x^2$这两个互为倒数的正切值，那么它们——
+	]),
+	(chara.吉峰,[
+		（抢话）加起来等于$pi/2$！
+	]),
+	(chara.严佩,[
+		对，所以$arctan x^2+arctan 1/x^2=pi/2$，坐吧。#parbreak()
+		因此我们整理到最后会发现，$
+			F_1(x)-F_2(x)=pi/4+C_1-C_2.
+		$#noindent 说明这两个原函数的差是一个常数，所以这两个原函数其实是等价的。#parbreak()
+		还有别的问题吗？没有的话我就往下讲，时间不多了。
+	]),
+)
