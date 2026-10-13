@@ -150,8 +150,8 @@
 		lang:"zh",
 		region:"CN",
 		font:(
-			"Noto Serif CJK SC",
 			"Noto Serif",
+			"Noto Serif CJK SC",
 		),
 		size:10.5pt,
 		top-edge:"bounds",
