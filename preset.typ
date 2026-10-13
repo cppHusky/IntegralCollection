@@ -276,6 +276,48 @@
 		numbering:(..nums)=>numbering("1.1",..nums.pos().slice(2)),
 	)
 	show heading.where(level:4):set align(left)
+	show heading.where(level:4):it=>block(width:100%,context{
+		import "@preview/cetz:0.5.2"
+		let previous-heading-4=query(selector(metadata).before(here())).filter(d=>{
+			d.value.keys().contains("kind") and d.value.kind=="lesson"
+		}).last(default:none)
+		let next-heading-4=query(selector(metadata).after(here())).filter(d=>{
+			d.value.keys().contains("kind") and d.value.kind=="lesson"
+		}).at(1,default:none)
+		if previous-heading-4!=none {
+			link(
+				previous-heading-4.location(),
+				place(
+					left+horizon,
+					dx:-2.5em,
+					cetz.canvas(x:4pt,y:3pt,{
+						import cetz.draw:*
+						line((-3,0),(-1,2),(2,2),(2,-2),(-1,-2),close:true,stroke:silver,fill:silver)
+						content((0,0),text(weight:"bold",size:8pt)[#previous-heading-4.value.page])
+					}),
+				),
+			)
+		}
+		metadata((
+			kind:"lesson",
+			page:counter(page).get().first()
+		))
+		if next-heading-4!=none {
+			link(
+				next-heading-4.location(),
+				place(
+					right+horizon,
+					dx:2.5em,
+					cetz.canvas(x:4pt,y:3pt,{
+						import cetz.draw:*
+						line((3,0),(1,2),(-2,2),(-2,-2),(1,-2),close:true,stroke:silver,fill:silver)
+						content((0,0),text(weight:"bold",size:8pt)[#next-heading-4.value.page])
+					}),
+				),
+			)
+		}
+		it
+	})
 	show regex("[，。．、：；？！》』」】〗〕〉］｝“‘《『「【〖〔〈［｛，。．、：；]+"):it=>it.text.replace("。","．")
 	show regex("（.*?）"):emph
 	show emph:set text(
