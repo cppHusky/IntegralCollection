@@ -1,6 +1,7 @@
 #import "/utils.typ":lesson,chara,noindent,ruby
 #import "/math.typ":*
 #import "@preview/cetz:0.5.2"
+#import "@preview/mannot:0.4.0":*
 #let red(body)=text(fill:color.red,body)
 #let blue(body)=text(fill:color.blue,body)
 #lesson(
@@ -533,8 +534,8 @@
 				arctan x-arctan y+pi\,&-pi<arctan x-arctan y<-pi/2\,,
 				arctan x-arctan y-pi\,&pi/2<arctan x-arctan y<pi.
 			)
-		$#noindent 看起来比较复杂，但是别忘了，我们求出这个公式的根本目的是为了解决那个（指）：$
-			F_1(x)-F_2(x)=1/2arctan x^2+red(1/2arctan(sqrt(2)x+1)-1/2arctan(sqrt(2)x-1))+C_1-C_2.
+		$#noindent 看起来比较复杂，但是别忘了，我们求出这个公式的根本目的是为了解决这一部分——我用红笔框一下：$
+			F_1(x)-F_2(x)=1/2arctan x^2+markrect(1/2arctan(sqrt(2)x+1)-1/2arctan(sqrt(2)x-1),#color.red)+C_1-C_2.
 		$#noindent 那我们就来看一下，$arctan(sqrt(2)x+1)-arctan(sqrt(2)x-1)$它的值域到底是多少。#parbreak()
 		在高数课上大家都学过通过导数来求函数的极值和最值。我们令$
 			g(x)=arctan(sqrt(2)x+1)-arctan(sqrt(2)x-1).
@@ -545,7 +546,7 @@
 			&lim_(x->-infinity)g(x)=-pi/2-(-pi/2)=0,\
 			&g(0)=pi/4-(-pi/4)=pi/2.
 		$#noindent 所以$g(x)=arctan(sqrt(2)x+1)-arctan(sqrt(2)x-1)$的取值范围只在$(0,pi/2]$之间，那我们直接套公式第一行就行了：$
-			red(1/2arctan(sqrt(2)x+1)-1/2arctan(sqrt(2)x-1))=1/2arctan (sqrt(2)x+1-sqrt(2)x+1)/(1+2x^2-1)=1/2arctan 1/x^2.
+			markrect(1/2arctan(sqrt(2)x+1)-1/2arctan(sqrt(2)x-1),#color.red)=1/2arctan (sqrt(2)x+1-sqrt(2)x+1)/(1+2x^2-1)=1/2arctan 1/x^2.
 		$最后代回$F_1(x)-F_2(x)$的表达式，得到$
 			F_1(x)-F_2(x)=1/2arctan x^2+1/2arctan 1/x^2+C_1-C_2.
 		$#parbreak()
