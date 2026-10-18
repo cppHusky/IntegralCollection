@@ -172,7 +172,7 @@
 		if type(row)==content {
 			let message=row
 			grid.cell(
-				fill:chara-background(none),
+				fill:white,
 				inset:(
 					x:5pt,
 					y:par.leading/2,
