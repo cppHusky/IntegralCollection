@@ -167,6 +167,15 @@
 	)
 }
 #let noindent=h(-2em)
+#let section-outline=block(width:100%,context{
+	let next-section=query(selector(heading.where(level:3)).or(heading.where(level:2)).after(here())).first()
+	let subsections=selector(heading.where(level:4).after(here()).before(next-section.location()))
+	outline(
+		title:none,
+		target:subsections,
+		indent:0pt,
+	)
+})
 #let lesson(..args)=context{
 	let message-cell=(row)=>{
 		if type(row)==content {
