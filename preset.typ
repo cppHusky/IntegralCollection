@@ -47,10 +47,14 @@
 						},
 					)
 					h(1fr)
-					link(
-						<outline>,
-						counter(page).display(),
-					)
+					if query(selector(<题集篇>).after(here())).len()==0 {
+						link(
+							<outline>,
+							counter(page).display(),
+						)
+					} else {
+						counter(page).display()
+					}
 				} else {
 					let heading-1=query(selector(heading.where(level:1).after(here()))).filter(h=>{
 						h.location().page()==here().page()
@@ -60,10 +64,14 @@
 					} else {
 						heading-1
 					}
-					link(
-						<outline>,
-						counter(page).display(),
-					)
+					if query(selector(<题集篇>).after(here())).len()==0 {
+						link(
+							<outline>,
+							counter(page).display(),
+						)
+					} else {
+						counter(page).display()
+					}
 					h(1fr)
 					link(
 						heading-1.location(),
@@ -84,10 +92,14 @@
 		none
 	} else if is-chap-page() {
 		set align(center)
-		link(
-			<outline>,
-			counter(page).display(),
-		)
+		if query(selector(<题集篇>).after(here())).len()==0 {
+			link(
+				<outline>,
+				counter(page).display(),
+			)
+		} else {
+			counter(page).display()
+		}
 	} else {
 		none
 	}
