@@ -167,6 +167,20 @@
 	)
 }
 #let noindent=h(-2em)
+#let lrcases(eq)=math.lr({
+	set par(leading:.811em)
+	sym.brace
+	box(
+		inset:(
+			y:.3em
+		),
+		baseline:(
+			at:horizon,
+			shift:-.291em,
+		),
+		math.equation(eq),
+	)
+})
 #let section-outline=block(width:100%,context{
 	let next-section=query(selector(heading.where(level:3)).or(heading.where(level:2)).after(here())).first()
 	let subsections=selector(heading.where(level:4).after(here()).before(next-section.location()))

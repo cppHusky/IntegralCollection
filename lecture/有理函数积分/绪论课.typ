@@ -1,4 +1,4 @@
-#import "/utils.typ":lesson,chara,noindent,ruby
+#import "/utils.typ":lesson,chara,noindent,ruby,lrcases
 #import "/math.typ":*
 #import "@preview/cetz:0.5.2"
 #lesson(
@@ -664,9 +664,9 @@
 		$#noindent 现在，为了求出$A,B$，我们对等号两边同时乘以$x(x+1)$，得到$
 			1=A(x+1)+B x=(A+B)x+A.
 		$#noindent 这样我们就建立了两个多项式之间的相等关系。要达成这个相等关系，我们需要保证每一项的次数都相等。等号左边的一次项是$0$，那么就得满足$A+B=0$；等号左边的常数项是$1$，那么就得满足$A=1$。最终我们就能列出一个二元方程组：$
-			cases(
-					A+B&=0\,,
-					A&=1.
+			lrcases(
+				A&+&B&=0\,\
+				A& & &=1.
 			)
 		$#noindent 解出$A=1,space B=-1$，于是代回到刚才的裂项结果中，就是$
 			1/(x(x+1))=1/x-1/(x+1).
