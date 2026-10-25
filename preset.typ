@@ -288,6 +288,30 @@
 		numbering:(..nums)=>numbering("1.1",..nums.pos().slice(2)),
 	)
 	show heading.where(level:4):set align(left)
+	show heading.where(level:4):it=>{
+		let section-selector=selector(heading.where(level:3)).or(heading.where(level:2)).after(here()).before(<附录>)
+		let next-section=query(section-selector).first(default:none)
+		if next-section!=none {
+			show regex("放课后$"):{
+				[放课后]
+				h(1mm)
+				underline(link(
+					next-section.location(),
+					text(
+						font:(
+							"Noto Sans",
+							"Noto Sans CJK SC",
+						),
+						weight:"medium",
+						fill:luma(96),
+					)[【跳过剧情至#counter(page).at(next-section.location()).first()页】]
+				))
+			}
+			it
+		} else {
+			it
+		}
+	}
 	show regex("[，。．、：；？！》』」】〗〕〉］｝“‘《『「【〖〔〈［｛，。．、：；]+"):it=>it.text.replace("。","．")
 	show regex("（.*?）"):emph
 	show emph:set text(
