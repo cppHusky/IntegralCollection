@@ -1,4 +1,4 @@
-#import "/utils.typ":lesson,chara,noindent,ruby
+#import "/utils.typ":lesson,chara,noindent,ruby,lrcases
 #import "/math.typ":*
 #import "@preview/mannot:0.4.0":*
 #let red(body)=text(fill:color.red,body)
@@ -316,6 +316,25 @@
 		$#noindent 它们二者只需要通过一步倒代换就可以互相转化，但实际做起来的复杂度是完全不同的。#parbreak()
 		对于右边这个，虽然它也有一个高次因式$u^5$，但它在分子上，我们是可以对它进行分项的，也就是通过多项式除法，把它除成分子是1次的余式。接下来我们只需要设两个待定系数，对剩下的式子裂项就可以了。#parbreak()
 		但是如果像左边这个积分这样，它的高次因式在分母上，那我们就无计可施了。对于在分母上的东西，是不能直接做加减运算的——除了刚才那个同学（指），真不知道你脑子里怎么想的。#parbreak()
+		我们再来看一道题：$
+			integral x/(x+1)^5dif x.
+		$#noindent 这列第六排的男生，你来回答一下。
+	]),
+	(chara.游栖,[
+		（起身）此处应令$u=1/(x+1)$，于是$x=1/u-1$，$dif x=-1/u^2dif u$，将此积分化为$
+			-integral u^5(1/u-1)1/u^2dif u=integral (u^3-u^2)dif u.
+		$
+	]),
+	(chara.严佩,[
+		好，你叫什么名字？
+	]),
+	(chara.游栖,[
+		我叫游栖。
+	]),
+	(chara.严佩,[
+		好，你先坐吧。这题当然也可以用倒代换，但必要性没那么高，因为分母除了$x+1$以外没有其它因式，那你就算线性换元也一样很好做，也就是令$v=x+1$，变成$
+			integral (v-1)/v^5dif v=integral (v^4-v^5)dif v.
+		$#noindent 所以虽然倒代换好用，但也不能把思维局限在倒代换上，还是要具体问题具体分析。#parbreak()
 		当然了，后续我们讲无理函数积分的时候——这部分应该是杨教授讲，还会介绍一种比倒代换更强大的方法，叫分式线性代换。这里我们就先不多说了。我们看下一种换元。
 	]),
 )
@@ -406,5 +425,187 @@
 		$#noindent 当然你们还可以稍微整理一下这个结果，让它更好看一点：$
 			1/4log(x^4+1)+1/(2sqrt(2))arctan (x^2-1)/(sqrt(2)x)+1/(4sqrt(2))log markrect((x^2-sqrt(2)x+1)/(x^2+sqrt(2)x+1),#color.red)+C.
 		$#noindent 这里的$log$不用套绝对值符号，因为我红笔圈起来的部分一定是正值。简洁起见咱们就省了。
+	]),
+)
+==== 组合积分法
+#lesson(
+	(chara.严佩,[
+		然后我们再来看一道题，这次是含参积分：$
+			integral (a x^2+b)/(x^4+1)dif x.
+		$#noindent 刚才我们已经通过比较简洁的对勾换元，解决了$integral (x^2+1)/(x^4+1)dif x$和$integral (x^2-1)/(x^4+1)dif x$这两个问题。现在我们分别用$I,red(space I_1),blue(space I_2)$来表达它们：$
+			&I=integral (a x^2+b)/(x^4+1)dif x\
+			&red(I_1=integral (x^2+1)/(x^4+1)dif x)=1/sqrt(2)arctan (x^2-1)/sqrt(2)+C_1\
+			&blue(I_2=integral (x^2-1)/(x^4+1)dif x)=1/(2sqrt(2))log (x^2-sqrt(2)x+1)/(x^2+sqrt(2)x+1)+C_2.
+		$#noindent 现在我们希望用$red(I_1)$和$blue(I_2)$来表示$I$，这样一来，我们只要套用很容易算出的结果，就可以解决问题了。#parbreak()
+		这列第五排的男生，你来回答一下。
+	]),
+	(chara.谭派,[
+		（起身）我想一想……应该可以待定系数来做，也就是设$I=A I_1+B I_2$，去求解方程$
+			a x^2+b=A(x^2+1)+B(x^2-1).
+		$
+	]),
+	(chara.严佩,[
+		正确。你叫什么名字？
+	]),
+	(chara.谭派,[
+		我叫谭派。
+	]),
+	(chara.严佩,[
+		坐吧。这个方程求出来的结果是$A=(a+b)/2,space B=(a-b)/2$。所以原积分就等于$
+			I=(a+b)/2red(I_1)+(a-b)/2blue(I_2)=(a+b)/(2sqrt(2))arctan (x^2-1)/sqrt(2)+(a-b)/(4sqrt(2))log (x^2-sqrt(2)x+1)/(x^2+sqrt(2)x+1)+C.
+		$#parbreak()
+		我们来回顾一下，解决这道题目的关键在于刚才谭派列出的这个式子：$
+			I=A red(I_1)+B blue(I_2).
+		$#noindent 这里把$I$分解成了$A red(I_1)$和$B blue(I_2)$，应用的是我们再熟悉不过的分项积分法，这里我就是多作解释了。#parbreak()
+		再来看下一题：$
+			I=integral (a x^4+b x^2+c)/(x^6+1)dif x.
+		$#noindent 谭派旁边那个男生，你来回答一下，这道题你的思路是什么？
+	]),
+	(chara.展庸,[
+		（起身）我，没有思路。
+	]),
+	(chara.严佩,[
+		一点思路都没有？
+	]),
+	(chara.展庸,[
+		有一点。可以把分子上的$b x^2$分项出来，因为$integral x^2/(x^6+1)dif x$只要凑个$dif x^3$就很好做了。
+	]),
+	(chara.严佩,[
+		很好，那现在我先列出第一个积分$red(I_1)$，它等于$
+			red(integral x^2/(x^6+1)dif x)=1/3integral 1/(x^6+1)dif x^3=1/3arctan x^3+C_1.
+		$#noindent 然后呢？
+	]),
+	(chara.展庸,[
+		剩下一个$integral (a x^4+c)/(x^6+1)dif x$也没什么好办法。
+	]),
+	(chara.严佩,[
+		我来提示一下你吧。现在分母$x^6+1$肯定是固定的。那么，当分子是什么的时候，这个题比较好算？你刚才已经提过一个符合要求的分子了，就是$x^2$，因为$integral x^2/(x^6+1)dif x$可以直接换元$u=x^3$变成$1/3integral 1/(u^2+1)dif u$。#parbreak()
+		你还能不能想到其它的分子？
+	]),
+	(chara.展庸,[
+		哦……我有一个想法。因为$x^6+1=(x^2+1)(x^4-x^2+1)$，所以如果分子是$x^2+1$的话，可以把分母中的一个因式直接约分掉，也就是$
+			integral (x^2+1)/(x^6+1)dif x=integral 1/(x^4-x^2+1)dif x.
+		$
+	]),
+	(chara.严佩,[
+		这是一个不错的方向，但还不够好。我问你，你选择了$x^2+1$这个分子，把被积函数化成了$1/(x^4-x^2+1)$，那么这个积分又该怎么做？
+	]),
+	(chara.展庸,[
+		呃……
+	]),
+	(chara.严佩,[
+		其实你刚才的因式分解中还有一个$x^4-x^2+1$，为什么不拿它作分子，把分母约到只剩$x^2+1$呢？
+	]),
+	(chara.展庸,[
+		但$a x^4+c$里面已经没有二次项了……
+	]),
+	(chara.严佩,[
+		那又如何呢？你不是已经算出$red(I_1=integral x^2/(x^6+1)dif x)$了吗？哪怕你在别的式子里多减了$x^2$，你还可以随时用$red(I_1)$找补回来啊。
+	]),
+	(chara.展庸,[
+		说得也是……
+	]),
+	(chara.严佩,[
+		所以我们现在就列出第二个积分$blue(I_2)$，也就是$
+			blue(integral (x^4-x^2+1)/(x^6+1)dif x)=integral 1/(x^2+1)dif x.
+		$#noindent 好了，现在还剩下你之前设想的那个积分$integral 1/(x^4-x^2+1)dif x$。你有思路吗？
+	]),
+	[
+		坐在一旁的谭派掩着嘴，对他耳语了些什么。
+	],
+	(chara.严佩,[
+		那个谭派，想说什么你就站起来说，别遮遮掩掩的。
+	]),
+	(chara.谭派,[
+		我觉得这个积分应该还是要用对勾换元，也就是把它分成$
+			1/2integral (x^2+1)/(x^4-x^2+1)dif x-1/2integral (x^2-1)/(x^4-x^2+1)dif x.
+		$#noindent 对于第一个积分，就凑$dif(x-x^(-1))$：$
+			integral (x^2+1)/(x^4-x^2+1)dif x=integral (1+x^(-2))/(x^2+x^(-2)-1)dif x=integral dif(x-x^(-1))/((x-x^(-1))^2+1).
+		$#noindent 对于第二个积分，就凑$dif(x+x^(-1))$：$
+			integral (x^2-1)/(x^4-x^2+1)dif x=integral (1-x^(-2))/(x^2+x^(-2)-1)dif x=integral dif(x+x^(-1))/((x+x^(-1))^2-3).
+		$
+	]),
+	(chara.严佩,[
+		不错。这样一来确实可以用比较少的计算量算出$integral 1/(x^4-x^2+1)dif x$。但是啊……我们就一定要用这个积分吗？
+	]),
+	(chara.谭派,[
+		什么意思……
+	]),
+	(chara.严佩,[
+		你们俩先坐吧。大家看，为了算出$integral 1/(x^4-x^2+1)dif x$，我们需要把它拆成$integral (x^2+1)/(x^4-x^2+1)dif x$和$integral (x^2-1)/(x^4-x^2+1)dif x$这两个积分来做。但是，为什么我们不直接使用这两个积分中的一个呢？这样不是还能再降低一半的计算量吗？#parbreak()
+		我们对分子分母同乘$x^2+1$，把它们打回原形：$
+			integral (x^2+1)/(x^4-x^2+1)dif x=markrect(integral (x^4+2x+1)/(x^6+1)dif x,#color.olive),quad integral (x^2-1)/(x^4-x^2+1)dif x=markrect(integral (x^4-1)/(x^6+1)dif x,#color.olive).
+		$#noindent 你们看，在分母为$x^6+1$时，这两个积分应该长这样。我用绿笔框出来。而我们已经有了两个积分$
+			red(I_1=integral x^2/(x^6+1)dif x),quad blue(I_2=integral (x^4-x^2+1)/(x^6+1)dif x).
+		$#noindent 现在的问题是，我们要如何拼出一个$integral (a x^4+b x^2+c)/(x^6+1)dif x$这样的积分来？刚才框起来的这两个积分当中，我们应该选哪个？谁有思路的话，可以举手回答。#parbreak()
+		（看到有人举手）朱异，你来说说吧。
+	]),
+	(chara.朱异,[
+		（起身）应该选第二个。如果选了第一个的话，它的分子也包含$x^4+1$，而$I_2$的分子也包含$x^4+1$，那就没有办法分项了。
+	]),
+	(chara.严佩,[
+		#let a=$$
+		#let b=$cases(
+			 &+&B&+&2D&=&a,
+			A&-&B&+&2D&=&b,
+			 &+&B&+& D&=&c.
+		)$
+		你说的有点模糊，但我知道你想表达的意思了。先坐吧。我们现在就假设$I_3=integral (x^4+2x^2+1)/(x^6+1)dif x$，看看原积分$I$能不能分项成这三个积分的和，也就是$
+			I=&A red(I_1)+B blue(I_2)+D I_3\
+			a x^4+b x^2+c=&A x^2+B(x^4-x^2+1)+D(x^4+2x^2+1).
+		$#noindent 然后我们能得到这个方程组：$
+			lrcases(
+			 & &B&+& D&=a\,\
+			A&-&B&+&2D&=b\,\
+			 & &B&+& D&=c.
+			)
+		$#noindent 大家线代如果及格了的话，到这一步应该都能看出来，它肯定是求不出唯一解的。#parbreak()
+		那如果我们用$olive(I_3=integral (x^4-1)/(x^6+1)dif x)$的话，这个式子列出来就是$
+			a x^4+b x^2+c=A x^2+B(x^4-x^2+1)+D(x^4-1).
+		$#noindent 然后我们得到的方程组就是$
+			lrcases(
+				 & &B&+&D&=a\,\
+				A&-&B& & &=b\,\
+				 & &B&-&D&=c.
+			)
+		$#noindent 这个方程是有唯一解的，不信你们自已算行列式。最后解出来等于——肖虑？
+	]),
+	(chara.肖虑,[$
+		A=(a+2b+c)/2,space B=(a+c)/2,space D=(a-c)/2.
+	$]),
+	(chara.严佩,[
+		好，所以最终结果就是：$
+			integral (a x^4+b x^2+c)/(x^6+1)dif x=(a+2b+c)/2red(integral x^2/(x^6+1)dif x)+(a+c)/2blue(integral (x^4-x^2+1)/(x^6+1)dif x)+(a-c)/2olive(integral (x^4-1)/(x^6+1)dif x).
+		$#parbreak()
+		现在我拿一道具体的问题给大家演示一下，就以$integral x^4/(x^6+1)dif x$为例。把分子的各项的系数代入到上式，就能得到$A=B=C=1/2$。所以$
+			integral x^4/(x^6+1)dif x=&1/2integral x^2/(x^6+1)dif x+1/2integral (x^4-x^2+1)/(x^6+1)dif x+1/2integral (x^4-1)/(x^6+1)dif x\
+			=&1/6integral dif(x^6+1)/(x^6+1)+1/2integral (dif x)/(x^2+1)+1/2integral (x^2-1)/(x^4-x^2+1)dif x\
+			=&1/6log(x^6+1)+1/2arctan x+1/2integral (1-x^(-2))/(x^2+x^(-2)-1)dif x\
+			=&1/6log(x^6+1)+1/2arctan x+1/2integral dif(x+x^(-1))/((x+x^(-1))^2-3)\
+			=&1/6log(x^6+1)+1/2arctan x+1/(4sqrt(3))log (x^2-sqrt(3)x+1)/(x^2+sqrt(3)x+1)+C.
+		$#parbreak()
+		现在大家对照这个解题过程，再和直接裂项比较一下，就会明白这种做法的高明之处。在这里，我们把三个更简单的积分$red(I_1),blue(I_2),olive(I_3)$线性组合起来，巧妙地凑出了原积分，从而以比较低的计算量解决了这个积分。这种方法叫做*组合积分法*。#parbreak()
+		（看钟）组合积分法的根本思路是：对于一个待解决的困难积分$I$，找到一系列容易解决的简单积分$I_1,I_2,I_3,...$，把$I$表示成$
+			I=a_1I_1+a_2I_2+a_3I_3+...
+		$#noindent 的形式，从而解出$I$。所以它和分项积分法是一脉相承的。不过，组合积分法在形式上要更加多变，比如说这道题：$
+			I_1=integral (cos x)/(sin x+cos x)dif x.
+		$#noindent 乍看起来很不好做，但是如果我们构造一个辅助积分$
+			I_2=integral (sin x)/(sin x+cos x)dif x
+		$#noindent 的话，我们就会发现，$I_1+I_2$和$I_1-I_2$都非常好算：$
+			lrcases(
+				&I_1&+&I_2=integral (cos x+sin x)/(sin x+cos x)dif x=integral dif x=x+C_1\,\
+				&I_1&-&I_2=integral (cos x-sin x)/(sin x+cos x)dif x=integral dif(sin x+cos x)/(sin x+cos x)=log abs(sin x+cos x)+C.
+			)
+		$#noindent 既然这样，直接解方程组就能算出$I_1$了。#parbreak()
+		这块没有完全理解也不用担心，因为我们在之后的三角函数积分阶段，还会用一整节课的时间来讲解组合积分法。#parbreak()
+		（看钟）还剩两分钟下课了，我讲讲下节课的安排啊。下节课呢，我们的主要任务就不讲积分了，我们来讲讲裂项。经过这两节课大家应该也能看得出来，有理函数积分的方法都很直截了当，加快解题的技巧呢也就这些，主要难点其实都在计算量上，而关键步骤就在于裂项。#parbreak()
+		一个$n$次分母的裂项就意味着需要设$n$个待定系数，解$n$元方程组，算错一个数就完蛋。所以为了加快裂项的速度，降低计算量，我们还需要学习一些更高效的裂项方法。#parbreak()
+		下节课讲完了，咱们第一部分的课就算结束了。下节课之后呢，牛弘助教会给大家安排一节习题课。习题课不考勤，但是大家最好去，因为期末考试的很多题型都会在习题课上讲，甚至可能还有原题。
+	]),
+	[
+		下课铃如约响起。
+	],
+	(chara.严佩,[
+		回去一定要好好复习。下课！
 	]),
 )
