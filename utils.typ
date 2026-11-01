@@ -1,4 +1,5 @@
 #import "lecture/names.typ":chara,avatar,chara-background
+#let after-lesson-counter=counter("after-lesson")
 #let page-break={
 	set page(header:none,footer:none)
 	pagebreak(weak:true,to:"odd")
@@ -227,6 +228,22 @@
 		columns:(1fr),
 		..args.pos().map(message-cell),
 	)
+}
+#let after-lesson(..args)=context{
+	pagebreak()
+	after-lesson-counter.step()
+	let after-lesson-number=after-lesson-counter.get().first()
+	let pagenum=state("after-lesson-"+str(after-lesson-number))
+	let after-lesson-first-page=here().page()
+	let after-lesson-last-page=pagenum.final()
+	set page(
+		footer:context align(center,text(fill:luma(96))[
+			后日谈#after-lesson-counter.display("壹")#h(1em)#(here().page()-after-lesson-first-page+1) / #(after-lesson-last-page -after-lesson-first-page+1)
+		])
+	)
+	heading(level:4)[放课后]
+	lesson(..args)
+	context pagenum.update(here().page())
 }
 #let pinyin(body)={
 	show "a1":"ā"

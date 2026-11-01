@@ -192,7 +192,7 @@
 	show math.equation:set block(breakable:true)
 	show math.equation.where(block:true):it=>block({
 		math-state-counter.step()
-		let pagenum=state(str(math-state-counter.get().first()))
+		let pagenum=state("eq-"+str(math-state-counter.get().first()))
 		context if here().page()!=pagenum.final(){
 			set text(fill:silver,size:16pt)
 			place(
