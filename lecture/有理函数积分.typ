@@ -11,3 +11,6 @@
 #section-outline
 #include "有理函数积分/进阶积分技巧.typ"
 #pagebreak()
+=== 拓展裂项方法
+#section-outline
+#include "有理函数积分/拓展裂项方法.typ"
